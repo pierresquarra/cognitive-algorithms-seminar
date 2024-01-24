@@ -36,6 +36,8 @@
 
 \section{Reinforcement Learning}
 
+%---------------------------------------------------------
+
 \subsection{Key Concepts and Terminology}
 \begin{frame}{Learning in Dynamic Environments}
     \begin{columns}
@@ -87,7 +89,7 @@
             \uncover<2->{\node[action, below=1cm of {$(agent)!0.5!(environment)$}] (observations) {Observation};}
             \uncover<3->{\node[below=0mm of actions] (action) {\small action $a_t$};}
             \uncover<3->{\node[above=0mm of observations] (new_state) {\small state $s_{t+1}$};}
-            \uncover<3->{\node[below=0mm of observations] (reward) {\small reward $r_{t}$};}
+            \uncover<3->{\node[below=0mm of observations] (reward) {\small reward $r_{t+1}$};}
             % Arrows
             \uncover<2->{\draw[-, color=structure] (agent.north) |- (actions.west);}
             \uncover<2->{\draw[->, color=structure] (actions.east) -| (environment);}
@@ -135,37 +137,53 @@
             G_t = R_{t+1} + R_{t+2} + R_{t+3} + \dots
         \end{equation*}
         \begin{columns}
-            \begin{column}{0.5\textwidth}
+            \begin{column}{0.45\textwidth}
                 \centering
-                state-value function
+                \textbf{state-value function}
                 \begin{equation*}
                     v(s) = \mathbb{E} [G_t \mid S_t = s]
                 \end{equation*}
-                how good it is for the agent to be in a given state
+                How good it is for the agent to be in a given state
             \end{column}
-            \begin{column}{0.5\textwidth}
+            \begin{column}{0.45\textwidth}
                 \centering
-                action-value-function
+                \textbf{action-value function}
                 \begin{equation*}
                     q(s,a) = \mathbb{E} [G_t \mid S_t = s, A_t = a]
                 \end{equation*}
-                how good it is to perform a certain action in a given state
+                How good it is to perform a certain action in a given state
             \end{column}
         \end{columns}
-        \item We call the expected cumulative reward, from a state s, the \alert{value}
+        \vspace{5mm}
+        \item A \alert{policy} is a strategy that the agent follows to decide actions based on the current state $\pi(s) \rightarrow a$
+        \item Goal: select actions to maximize value $\rightarrow$ \alert{find optimal policy}
         \begin{equation*}
-            v(s) = \mathbb{E} [G_t \mid S_t = s]
-        \end{equation*}
-        \item Goal is to \alert{maximize value}, by picking suitable actions
-        \item It is also possible to condition the value on \alert{actions}
-        \begin{equation*}
-            q(s,a) = \mathbb{E} [G_t \mid S_t = s, A_t = a]
+            \pi^*(s) = \underset{a}{\text{argmax }} q(s,a)
         \end{equation*}
     \end{itemize}
 \end{frame}
 
-\subsection{RL algorithms overview}
-\subsection{Challenges in RL}
+%---------------------------------------------------------
+
+\subsection{Q-Learning}
+\begin{frame}{Q-Learning}
+    \begin{itemize}
+        \item \alert{Q-Learning} uses a Q-table with $S \times A$ entries to store the expected rewards for state-action pairs
+        \begin{equation*}
+            Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha \underbrace{\Bigl[R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t)\Bigr]}_\text{Bellman error}
+        \end{equation*}
+        \item The \alert{Bellman error} is the difference between the current estimate of the Q-value for a state-action pair and the "true" Q-value
+        \item The discount factor $\boldsymbol{\gamma}$ determines the importance of future rewards relative to immediate rewards
+        \item The learning rate $\boldsymbol{\alpha}$ determines how quickly the agent learns from its experiences
+    \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------
+
+\subsection{Limitations of standard RL}
+\begin{frame}{Limitations of standard RL}
+    
+\end{frame}
 
 \section{Deep Q Networks}
 \subsection{Workings of DQNs}
