@@ -66,7 +66,7 @@
 
 %---------------------------------------------------------
 
-\section{Reinforcement Learning}
+\section{Fundamentals of Reinforcement Learning}
 \subsection{Agent-Environment Interface}
 \begin{frame}{Agent-Environment Interface}
     \begin{minipage}[c][2cm][c]{\textwidth}
@@ -168,17 +168,17 @@
 \subsection{Limitations of standard RL}
 \begin{frame}{Limitations of standard RL}
     \begin{itemize}
-        \item Curse of dimensionality
+        \item Tabular methods are impractical
         \begin{description}
-            \item[Problem:] Tabular methods are impractical
+            \item[Problem:] Curse of dimensionality
         \end{description}
         \item Generalization across states
         \begin{description}
             \item[Problem:] Fail to generalize across similar states
         \end{description}
-        \item Continuous state and action spaces
+        \item Continuous state and action spaces 
         \begin{description}
-            \item[Problem:] Designed for continuous domains
+            \item[Problem:] Q-Leaning designed for continuous domains
         \end{description}
     \end{itemize}
     \begin{block}{Solution}<2->
@@ -191,8 +191,8 @@
 
 %---------------------------------------------------------
 
-\section{Deep Q Networks}
-\subsection{Workings of DQNs}
+\section{Deep Reinforcement Learning}
+\subsection{Deep Q Networks}
 \begin{frame}{Deep Q Networks}
     \tikzset{
     input/.style={rectangle, draw, text width=3em, text centered, minimum height=2em},
@@ -242,17 +242,17 @@
 \end{frame}
 
 \subsection{Challenges in Deep Q Networks}
-\begin{frame}{Frame Title}
+\begin{frame}{Challenges in Deep Q Networks}
     \begin{itemize}
-        \item \textbf{Experience Replay}
-        \begin{description}
-            \item[Problem:] Correlation of states lead to inefficiencies and instability
-            \item[Solution:] Randomly sample from a memory buffer to break correlation
-        \end{description}
         \item \textbf{Target Network}
         \begin{description}
             \item[Problem:] Using the same network for selecting and evaluating actions makes it hard for the model to stabilize and converge
             \item[Solution:] Use a target network to evaluate actions
+        \end{description}
+        \item \textbf{Experience Replay}
+        \begin{description}
+            \item[Problem:] Correlation of states lead to inefficiencies and instability
+            \item[Solution:] Randomly sample from a memory buffer to break correlation
         \end{description}
     \end{itemize}
 \end{frame}
@@ -260,7 +260,7 @@
 
 %---------------------------------------------------------
 \begin{frame}[allowframebreaks]{References}
-\bibliographystyle{abbrv}
+\bibliographystyle{ieeetr}
 \bibliography{bibliography}
 \end{frame}
 
