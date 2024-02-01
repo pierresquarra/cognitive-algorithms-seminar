@@ -17,7 +17,7 @@ jobs:
           path: main.pdf
       - name: Create HTML page to embed PDF
         run: |
-          echo '<html><body><iframe src="./document.pdf" width="100%" height="100%"></iframe></body></html>' > index.html
+          echo '<html><body><iframe src="./document.pdf" width="100%" height="100%"></iframe></body></html>' > document.html
       - name: Deploy to GitHub Pages
         run: |
           git config --local user.email "action@github.com"
@@ -26,7 +26,7 @@ jobs:
           git checkout gh-pages
           git rm -rf .
           cp main.pdf ./document.pdf
-          cp index.html ./index.html
+          cp document.html ./index.html
           git add ./document.pdf ./index.html
           git commit -m "Update PDF and HTML"
           git push origin gh-pages
