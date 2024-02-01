@@ -15,3 +15,14 @@ jobs:
         with:
           name: PDF
           path: main.pdf
+      - name: Deploy PDF to GitHub Pages
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git fetch
+          git checkout gh-pages
+          git rm -rf .
+          cp main.pdf ./your-pdf-name.pdf
+          git add ./your-pdf-name.pdf
+          git commit -m "Update PDF"
+          git push origin gh-pages
